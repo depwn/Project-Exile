@@ -20,7 +20,8 @@ public class Player : MonoBehaviour
     {
         
         PlayerMovement();
-        //MainAttackAction();
+        MainAttackAction();
+        GatherResources();
         //StatusSystem();
     }
     void PlayerMovement()
@@ -46,10 +47,31 @@ public class Player : MonoBehaviour
     void MainAttackAction()
     {
         //Make the player do a melee attack with the right click.
+        if (Input.GetMouseButtonDown(1))
+        {
+            PlayerAnim.SetBool("IsAttacking", true);
+
+        }
+        else  
+        {
+            PlayerAnim.SetBool("IsAttacking", false);
+        }
     }
 
     void StatusSystem()
     {
         //Calculate player status such as Life , Hunger , Water , Sanity etc.
+    }
+    void GatherResources()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            PlayerAnim.SetBool("IsGathering", true);
+
+        }
+        else
+        {
+            PlayerAnim.SetBool("IsGathering", false);
+        }
     }
 }
