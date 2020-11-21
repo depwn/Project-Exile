@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    Collider PlayerCol;
     Animator PlayerAnim;
     float RotationSpeed = 10.0f;
     Rigidbody PlayerRB;
@@ -43,6 +45,14 @@ public class Player : MonoBehaviour
         {
             PlayerAnim.SetBool("IsWalking", false);
         }
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (PlayerCol.gameObject.CompareTag("Loot"))
+        {
+            Destroy(other.gameObject);
+        }
+        
     }
     void MainAttackAction()
     {

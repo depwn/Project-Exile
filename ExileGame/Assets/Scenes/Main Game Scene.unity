@@ -467,7 +467,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PullOBJ: {fileID: 0}
-  ForceSpeed: 5
+  ForceSpeed: 7
+  offset: {x: 0.3, y: 0.3, z: 0.3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13d2b18c06fe094c84998a73d283e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCol: {fileID: 936346763}
   MainPlayer: {fileID: 936346758}
 --- !u!4 &936346761 stripped
 Transform:
@@ -599,7 +601,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 1
 --- !u!65 &936346763
 BoxCollider:
@@ -895,13 +897,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 1757056487138150, guid: a4ad2e271986468428a4ce6a219fba12, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4749245984341470, guid: a4ad2e271986468428a4ce6a219fba12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.1702101
       objectReference: {fileID: 0}
     - target: {fileID: 4749245984341470, guid: a4ad2e271986468428a4ce6a219fba12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.17
+      value: -1.035
       objectReference: {fileID: 0}
     - target: {fileID: 4749245984341470, guid: a4ad2e271986468428a4ce6a219fba12, type: 3}
       propertyPath: m_LocalPosition.z
