@@ -7,22 +7,26 @@ public class Player : MonoBehaviour
     [SerializeField]
     Collider PlayerCol;
     Animator PlayerAnim;
+    [SerializeField]
+    Animation Idle;
     float RotationSpeed = 10.0f;
-    Rigidbody PlayerRB;
     float PlayerSpeed = 5f;
+    
     [SerializeField]
     GameObject MainPlayer;
+    public Camera cam;
     void Start()
     {
         PlayerAnim = GetComponent<Animator>();
-        PlayerRB = GetComponent<Rigidbody>();
+        //Idle = GetComponent<Animation>();
     }
 
     private void FixedUpdate()
     {
         
         PlayerMovement();
-        MainAttackAction();
+        LeftClickAction();
+        //RightClickAction();
         GatherResources();
         //StatusSystem();
     }
@@ -46,26 +50,33 @@ public class Player : MonoBehaviour
             PlayerAnim.SetBool("IsWalking", false);
         }
     }
-    public void OnTriggerEnter(Collider other)
+    
+    
+    void LeftClickAction()
     {
-        if (PlayerCol.gameObject.CompareTag("Loot"))
-        {
-            Destroy(other.gameObject);
-        }
-        
-    }
-    void MainAttackAction()
-    {
-        //Make the player do a melee attack with the right click.
-        if (Input.GetMouseButtonDown(1))
-        {
+        //TO DO: Move this to the AXE Scriptable object's left click
+        if (Input.GetMouseButtonDown(0)) {
+            //Idle.Stop();
             PlayerAnim.SetBool("IsAttacking", true);
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
+            if (Physics.Raycast(ray, out hit, 100)) {
+                GameObject hitObject = hit.transform.gameObject;
+                if (hitObject.CompareTag("Interactable")) {                    
+                    StartCoroutine(WaitAndDestroy(hitObject, 1.5f));                    
+                }
+            }
         }
-        else  
-        {
+        else {
             PlayerAnim.SetBool("IsAttacking", false);
         }
+    }
+    //Delay the destruction of Interactable to line up with the animation WIP
+    IEnumerator WaitAndDestroy(GameObject obj,float time) {
+        // suspend execution for 'time' seconds
+        yield return new WaitForSeconds(time);
+        Destroy(obj);
     }
 
     void StatusSystem()
@@ -74,7 +85,7 @@ public class Player : MonoBehaviour
     }
     void GatherResources()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             PlayerAnim.SetBool("IsGathering", true);
 

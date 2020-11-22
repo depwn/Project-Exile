@@ -6,7 +6,7 @@ public class VacuumLoot : MonoBehaviour
 {
     public GameObject PullOBJ;
     public float ForceSpeed;
-    float VacuumOffset = 0.3f;
+    float VacuumOffset = 0.5f;
     public void OnTriggerStay(Collider coll) 
     {
 
