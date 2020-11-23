@@ -20,7 +20,7 @@ public class VacuumLoot : MonoBehaviour
             if(Vector3.Distance(PullOBJ.transform.position,transform.position)<=VacuumOffset) 
             {
                 Loot(PullOBJ);
-                Destroy(PullOBJ);
+                //Destroy(PullOBJ);
             }
         }     
     }
