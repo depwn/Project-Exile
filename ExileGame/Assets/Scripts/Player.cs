@@ -7,23 +7,28 @@ public class Player : MonoBehaviour
     [SerializeField]
     Collider PlayerCol;
     Animator PlayerAnim;
-    [SerializeField]
-    Animation Idle;
+
     float RotationSpeed = 10.0f;
     float PlayerSpeed = 5f;
     
     [SerializeField]
     GameObject MainPlayer;
     public Camera cam;
+    [SerializeField]
+    EnemyScript Enemy;
+    //Player stats
+    public float PlayerLife ;
+    float PlayerSanity = 100f;
+    float PlayerHunger = 100f;
+    float PlayerThirst = 100f;
     void Start()
     {
         PlayerAnim = GetComponent<Animator>();
-        //Idle = GetComponent<Animation>();
+        PlayerLife = 100f;
     }
 
     private void FixedUpdate()
     {
-        
         PlayerMovement();
         LeftClickAction();
         //RightClickAction();
@@ -64,7 +69,7 @@ public class Player : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100)) {
                 GameObject hitObject = hit.transform.gameObject;
                 if (hitObject.CompareTag("Interactable")) {                    
-                    StartCoroutine(WaitAndDestroy(hitObject, 1.5f));                    
+                    StartCoroutine(WaitAndDestroy(hitObject, 1f));                    
                 }
             }
         }
@@ -88,11 +93,22 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             PlayerAnim.SetBool("IsGathering", true);
-
         }
         else
         {
             PlayerAnim.SetBool("IsGathering", false);
         }
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage();
+            Debug.Log(PlayerLife);
+        }
+    }
+    public void TakeDamage()
+    {
+        PlayerLife -= Enemy.damage;
     }
 }
