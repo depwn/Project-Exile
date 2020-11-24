@@ -153,6 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468185179833ef843b6eea4ffd8fbcf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 767466736}
+  Player: {fileID: 767466735}
+  EnemyLife: 0
   damage: 15
 --- !u!65 &248356962
 BoxCollider:
@@ -353,6 +356,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &767466735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1256756805690999422, guid: d6ffc7a68b46ea349a9e7b7fcb479942,
+    type: 3}
+  m_PrefabInstance: {fileID: 1258434690616072076}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &767466736 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1258434691451360011, guid: d6ffc7a68b46ea349a9e7b7fcb479942,
+    type: 3}
+  m_PrefabInstance: {fileID: 1258434690616072076}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767466735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13d2b18c06fe094c84998a73d283e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1253410044
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +690,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1409790943336388240, guid: 976be398d070c5c45997b39aa46b887f,
         type: 3}
+    - target: {fileID: 2803202326242639613, guid: b90194e04df87094d995077e56689210,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2807603824054879852, guid: b90194e04df87094d995077e56689210,
         type: 3}
       propertyPath: m_LocalPosition.x

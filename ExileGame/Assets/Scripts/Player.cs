@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float PlayerDamage = 10.0f;
     [SerializeField]
     Collider PlayerCol;
     Animator PlayerAnim;
@@ -21,14 +22,17 @@ public class Player : MonoBehaviour
     float PlayerSanity = 100f;
     float PlayerHunger = 100f;
     float PlayerThirst = 100f;
+    float AttackTimer = 1.0f;
     void Start()
     {
         PlayerAnim = GetComponent<Animator>();
         PlayerLife = 100f;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        AttackTimer += Time.deltaTime;
+       // Debug.Log(AttackTimer);
         PlayerMovement();
         LeftClickAction();
         //RightClickAction();
@@ -46,7 +50,7 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(MoveDir), RotationSpeed * Time.deltaTime);
         }
 
-        if (Input.GetAxis("Horizontal")!=0 || Input.GetAxis("Vertical") != 0)
+        if (Input.GetAxis("Horizontal")!=0 || Input.GetAxis("Vertical") != 0 && PlayerSpeed!=0)
         {
             PlayerAnim.SetBool("IsWalking", true);
         }
@@ -60,21 +64,33 @@ public class Player : MonoBehaviour
     void LeftClickAction()
     {
         //TO DO: Move this to the AXE Scriptable object's left click
-        if (Input.GetMouseButtonDown(0)) {
-            //Idle.Stop();
+        if (Input.GetMouseButtonDown(0) && AttackTimer > 1.0f) {
+            PlayerSpeed = 0f;
+            AttackTimer = 0f;
+            AttackTimer += Time.deltaTime;
+           //Debug.Log(AttackTimer);
+            Debug.Log("Attack Pressed");
             PlayerAnim.SetBool("IsAttacking", true);
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100)) {
                 GameObject hitObject = hit.transform.gameObject;
-                if (hitObject.CompareTag("Interactable")) {                    
-                    StartCoroutine(WaitAndDestroy(hitObject, 1f));                    
+                if (hitObject.CompareTag("Interactable")) {
+                    StartCoroutine(WaitAndDestroy(hitObject, 1f));
+                }
+                else if (hitObject.CompareTag("Enemy"))
+                {
+                    Enemy.TakeDamage();
                 }
             }
         }
         else {
             PlayerAnim.SetBool("IsAttacking", false);
+            if (AttackTimer >= 1.0f)
+            {
+                PlayerSpeed = 5f;
+            }
         }
     }
     //Delay the destruction of Interactable to line up with the animation WIP
@@ -104,7 +120,11 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             TakeDamage();
-            Debug.Log(PlayerLife);
+            Debug.Log(PlayerLife); 
+            if (PlayerLife<=0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     public void TakeDamage()
