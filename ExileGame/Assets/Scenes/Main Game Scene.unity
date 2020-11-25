@@ -418,6 +418,7 @@ MonoBehaviour:
   zoomFactor: 5
   minZoomFactor: 2
   maxZoomFactor: 10
+  rotationSpeed: 100
 --- !u!81 &901886577
 AudioListener:
   m_ObjectHideFlags: 0
@@ -534,7 +535,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c3fb2a9477aed2442b4f117532ee7246, type: 2}
+  - {fileID: 2100000, guid: 50fb2e732a64023488a97aad7c621a80, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
