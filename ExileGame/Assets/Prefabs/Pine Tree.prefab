@@ -145,9 +145,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   outline: {fileID: 2803202326242639613}
-  lootAmount: 5
+  nodeHP: 8
   lootTable:
   - drop: {fileID: 6842534188794167618, guid: 65010b638c9f5e34297055bfbdb18bd1, type: 3}
-    chance: 100
+    chance: 35
+    amount: 1
+    finalHitChance: 50
+    finalHitAmount: 2
   - drop: {fileID: 1409790943336388240, guid: 976be398d070c5c45997b39aa46b887f, type: 3}
-    chance: 25
+    chance: 100
+    amount: 1
+    finalHitChance: 100
+    finalHitAmount: 5

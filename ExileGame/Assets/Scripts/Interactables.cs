@@ -8,11 +8,15 @@ public class Interactables : MonoBehaviour {
     List<GameObject> interactablesInRange = new List<GameObject>();
     [SerializeField]
     private Outline outline;
-    public int lootAmount;
+    public int nodeHP;
+    
     [System.Serializable]
     public class drops {
         public GameObject drop;
         public float chance;
+        public int amount;
+        public float finalHitChance;
+        public int finalHitAmount;
     }
 
     public List<drops> lootTable = new List<drops>();
@@ -21,47 +25,32 @@ public class Interactables : MonoBehaviour {
         // This method will be overwritten by the InteractAction() method in the Scriptable objects        
     }
 
-    void Start() {
-
-    }
-        
-    public void GenerateLoot(List<drops> lootTable, int lootAmount) {
-        List<GameObject> drops = new List<GameObject>();
-        //foreach(drops drop in lootTable) {
-        for (int i = 0; i < lootAmount; i++) {
-            float RNG = Random.Range(0.0f, 100.0f);
-            Debug.Log("Rolled: " + RNG);
+    public void GenerateLoot() {        
+        nodeHP--;
+        if (nodeHP >= 1) {
+            float RNG = Random.Range(0.0f, 100.0f);            
             foreach (drops item in lootTable) {
                 if (item.chance > RNG) {
-                    LootDrop(item.drop);
-                }
-                else {
-                    Debug.Log("Did not spawn Dwayne 'The Rock' Johnson!");
+                    LootDrop(item.drop, item.amount);
                 }
             }
-        }        
-    }
-
-    //Spawn Loot Drops
-    void LootDrop(GameObject drop) {
-
-        GameObject baggelis = Instantiate(drop, new Vector3(transform.position.x + Random.Range(-0.5f, 1.5f), transform.position.y + Random.Range(0f, 1f), transform.position.z + Random.Range(-1.5f, 1.5f)), Quaternion.identity);
-        //GameObject instantiated = (GameObject)GameObject.Instantiate(name, transform.position, Quaternion.identity);
-        baggelis.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-4f, 4f), Random.Range(2f, 4f), Random.Range(-4f, 4f)), ForceMode.Impulse);
-
-
-    }
-
-    //Enters the interactables player is in range with (VacuumLoot collider range) in a List called interactablesInRange
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Interactable")) {
-            interactablesInRange.Add(other.gameObject);
+        }
+        else {
+            foreach (drops item in lootTable) {
+                float RNG = Random.Range(0.0f, 100.0f);
+                if (item.finalHitChance > RNG) {
+                    LootDrop(item.drop, item.finalHitAmount);
+                }
+            }
+            Destroy(this.gameObject);
         }
     }
 
-    private void OnTriggerExit(Collider other) {
-        if (other.CompareTag("Interactable")) {
-            interactablesInRange.Add(other.gameObject);
+    //Spawn Loot Drops
+    void LootDrop(GameObject drop, int amount) {
+        for (int i = 0; i < amount; i++) {
+            GameObject baggelis = Instantiate(drop, new Vector3(transform.position.x + Random.Range(-0.5f, 1.5f), transform.position.y + Random.Range(0f, 1f), transform.position.z + Random.Range(-1.5f, 1.5f)), Quaternion.identity);
+            baggelis.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-4f, 4f), Random.Range(2f, 4f), Random.Range(-4f, 4f)), ForceMode.Impulse);
         }
     }
 
@@ -73,11 +62,4 @@ public class Interactables : MonoBehaviour {
     private void OnMouseExit() {
         outline.enabled = !outline.enabled;
     }
-
-    //Loot Drop on Destroy
-    private void OnDestroy() {
-        GenerateLoot(lootTable, lootAmount);
-    }
-
-
-}
+} //Line69Nice.mp3

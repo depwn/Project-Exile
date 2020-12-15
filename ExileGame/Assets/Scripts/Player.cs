@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100)) {
                 GameObject hitObject = hit.transform.gameObject;
                 if (hitObject.CompareTag("Interactable")) {
-                    StartCoroutine(WaitAndDestroy(hitObject, 1f));
+                    hitObject.GetComponent<Interactables>().GenerateLoot();
                 }
                 else if (hitObject.CompareTag("Enemy"))
                 {
