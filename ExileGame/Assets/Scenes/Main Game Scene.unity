@@ -246,7 +246,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &727480292 stripped
 GameObject:
@@ -288,6 +288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a433701b9f762845be8b985a22edbe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20
+  Monsterloot: {fileID: 727480299}
+  Player: {fileID: 1064790663}
+  player: {fileID: 1064790664}
   EnemyAgent: {fileID: 727480293}
   PlayerCharacter: {fileID: 767466737}
   WhatsGround:
@@ -319,8 +323,14 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!4 &727480297 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4673369876368086, guid: e9a03d46b76afe246a9ffd58d255bb65,
+    type: 3}
+  m_PrefabInstance: {fileID: 1028388070}
+  m_PrefabAsset: {fileID: 0}
 --- !u!135 &727480298
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -355,6 +365,23 @@ MonoBehaviour:
     chance: 10
     amountMin: 1
     amountMax: 1
+--- !u!114 &727480300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727480292}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468185179833ef843b6eea4ffd8fbcf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Monsterloot: {fileID: 727480299}
+  player: {fileID: 1064790664}
+  Player: {fileID: 1064790663}
+  EnemyLife: 20
+  damage: 15
 --- !u!1 &738545602
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1462720695320296, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: RangedEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 4673369876368086, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_LocalPosition.x
@@ -543,7 +570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4673369876368086, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4673369876368086, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -584,7 +611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1462720695320296, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: MeleeEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 4673369876368086, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_LocalPosition.x
@@ -616,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4673369876368086, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4673369876368086, guid: e9a03d46b76afe246a9ffd58d255bb65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -754,7 +781,7 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1356560874 stripped
 GameObject:
@@ -774,6 +801,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552cba88d1d120e42a7c196a8f13e9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
+  Monsterloot: {fileID: 1356560882}
+  Player: {fileID: 1064790663}
+  player: {fileID: 1064790664}
   EnemyAgent: {fileID: 1356560876}
   PlayerCharacter: {fileID: 767466737}
   WhatsGround:
@@ -849,15 +880,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356560874}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 468185179833ef843b6eea4ffd8fbcf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Monsterloot: {fileID: 1356560882}
   player: {fileID: 1064790664}
   Player: {fileID: 1064790663}
   EnemyLife: 20
-  damage: 15
+  damage: 0
 --- !u!114 &1356560882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -937,7 +969,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4483153639051189 stripped
 Transform:
@@ -1103,7 +1135,7 @@ PrefabInstance:
     - target: {fileID: 1253694797208132806, guid: d6ffc7a68b46ea349a9e7b7fcb479942,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1253694797208132806, guid: d6ffc7a68b46ea349a9e7b7fcb479942,
         type: 3}
@@ -1125,16 +1157,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 1258434691451360006, guid: d6ffc7a68b46ea349a9e7b7fcb479942,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1258434691451360011, guid: d6ffc7a68b46ea349a9e7b7fcb479942,
         type: 3}
       propertyPath: Enemy
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1356560881}
     - target: {fileID: 1258434691451360011, guid: d6ffc7a68b46ea349a9e7b7fcb479942,
         type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 901886578}
+    - target: {fileID: 1258434691451360011, guid: d6ffc7a68b46ea349a9e7b7fcb479942,
+        type: 3}
+      propertyPath: LookTarget
+      value: 
+      objectReference: {fileID: 727480297}
+    - target: {fileID: 1258434691451360011, guid: d6ffc7a68b46ea349a9e7b7fcb479942,
+        type: 3}
+      propertyPath: MeleeEnemy
+      value: 
+      objectReference: {fileID: 727480294}
+    - target: {fileID: 1258434691451360011, guid: d6ffc7a68b46ea349a9e7b7fcb479942,
+        type: 3}
+      propertyPath: RangedEnemy
+      value: 
+      objectReference: {fileID: 1356560875}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6ffc7a68b46ea349a9e7b7fcb479942, type: 3}
 --- !u!1001 &2058720486556161589

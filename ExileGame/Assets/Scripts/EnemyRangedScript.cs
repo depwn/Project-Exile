@@ -5,6 +5,13 @@ using UnityEngine.AI;
 
 public class EnemyRangedScript : MonoBehaviour
 {
+    public float damage = 0f;
+    [SerializeField]
+    MonsterLoot Monsterloot;
+    [SerializeField]
+    GameObject Player;
+    [SerializeField]
+    Player player;
     Animator EnemyAnimRanged;
     public NavMeshAgent EnemyAgent;
 
@@ -35,6 +42,7 @@ public class EnemyRangedScript : MonoBehaviour
     }
     private void Start()
     {
+        EnemyHp = 20f;
         EnemyAnimRanged = GetComponent<Animator>();
     }
 
@@ -108,14 +116,15 @@ public class EnemyRangedScript : MonoBehaviour
         EnemyAnimRanged.SetBool("Stab Attack", false);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage()
     {
-        EnemyHp -= damage;
+        EnemyHp -= player.PlayerDamage;
 
         if (EnemyHp <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
     }
     private void DestroyEnemy()
     {
+        Monsterloot.GenerateLoot();
         Destroy(gameObject);
     }
 

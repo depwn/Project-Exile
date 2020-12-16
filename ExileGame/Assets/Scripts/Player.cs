@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //public Transform LookTarget;
     public float PlayerDamage = 10.0f;
     [SerializeField]
     Collider PlayerCol;
     Animator PlayerAnim;
-
     float RotationSpeed = 10.0f;
     float PlayerSpeed = 5f;
     
@@ -16,7 +16,9 @@ public class Player : MonoBehaviour
     GameObject MainPlayer;
     public Camera cam;
     [SerializeField]
-    EnemyScript Enemy;
+    EnemyMeleeAI MeleeEnemy;
+    [SerializeField]
+    EnemyRangedScript RangedEnemy;
     //Player stats
     public float PlayerLife ;
     float PlayerSanity = 100f;
@@ -25,12 +27,17 @@ public class Player : MonoBehaviour
     float AttackTimer = 1.0f;
     void Start()
     {
+        //LookTarget = Input.mousePosition
         PlayerAnim = GetComponent<Animator>();
         PlayerLife = 100f;
     }
 
     private void Update()
     {
+        if (PlayerLife<=0)
+        {
+            Destroy(gameObject);
+        }
         AttackTimer += Time.deltaTime;
        // Debug.Log(AttackTimer);
         PlayerMovement();
@@ -63,9 +70,13 @@ public class Player : MonoBehaviour
     
     void LeftClickAction()
     {
+
         //TO DO: Move this to the AXE Scriptable object's left click
+
         if (Input.GetMouseButtonDown(0) && AttackTimer > 1.0f) {
-            PlayerSpeed = 0f;
+        
+            //LookAtPointOfInterest();
+            //PlayerSpeed = 0f;
             AttackTimer = 0f;
             AttackTimer += Time.deltaTime;
            //Debug.Log(AttackTimer);
@@ -73,15 +84,18 @@ public class Player : MonoBehaviour
             PlayerAnim.SetBool("IsAttacking", true);
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
             if (Physics.Raycast(ray, out hit, 100)) {
                 GameObject hitObject = hit.transform.gameObject;
                 if (hitObject.CompareTag("Interactable")) {
                     hitObject.GetComponent<Interactables>().GenerateLoot();
                 }
-                else if (hitObject.CompareTag("Enemy"))
+                else if (hitObject.CompareTag("RangedEnemy"))
                 {
-                    Enemy.TakeDamage();
+                  RangedEnemy.TakeDamage();
+                }
+                else if (hitObject.CompareTag("MeleeEnemy"))
+                {
+                  MeleeEnemy.TakeDamage();
                 }
             }
         }
@@ -117,18 +131,40 @@ public class Player : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("ThrownRock"))
         {
-            TakeDamage();
-            Debug.Log(PlayerLife); 
-            if (PlayerLife<=0)
+            RangedTakeDamage();
+            Debug.Log(PlayerLife);
+            if (PlayerLife <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if(other.gameObject.CompareTag("MeleeEnemy"))
+            {
+            MeleeTakeDamage();
+            Debug.Log(PlayerLife);
+            if (PlayerLife <= 0)
             {
                 Destroy(gameObject);
             }
         }
     }
-    public void TakeDamage()
+    public void RangedTakeDamage()
     {
-        PlayerLife -= Enemy.damage;
+        PlayerLife -= RangedEnemy.damage;
     }
+    public void MeleeTakeDamage()
+    {
+        PlayerLife -= MeleeEnemy.damage;
+    }
+
+    //public void LookAtPointOfInterest()
+    //{
+    //    Vector3 MousePosition = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y));
+    //    transform.LookAt(MousePosition + Vector3.up *  transform.position.y);
+    ////    Vector3 LookDirection = LookTarget.position - transform.position;
+    ////    Quaternion RotateTo = Quaternion.LookRotation(LookDirection);
+    ////    MainPlayer.transform.rotation = Quaternion.Lerp(transform.rotation, RotateTo, PlayerSpeed * 5f);
+    //}
 }

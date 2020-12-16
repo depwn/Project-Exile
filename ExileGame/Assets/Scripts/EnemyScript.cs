@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     [SerializeField]
+    MonsterLoot Monsterloot;
+    [SerializeField]
     Player player;
     [SerializeField]
     GameObject Player;
@@ -30,6 +32,7 @@ public class EnemyScript : MonoBehaviour
         Debug.Log("Enemy took some damage!");
         if (EnemyLife<=0)
         {
+            Monsterloot.GenerateLoot();
             Destroy(gameObject);
         }
     }

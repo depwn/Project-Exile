@@ -4,6 +4,13 @@ using UnityEngine.AI;
 
 public class EnemyMeleeAI: MonoBehaviour
 {
+    public float damage = 20f;
+    [SerializeField]
+    MonsterLoot Monsterloot;
+    [SerializeField]
+    GameObject Player;
+    [SerializeField]
+     Player player;
     Animator EnemyAnim;
     public NavMeshAgent EnemyAgent;
 
@@ -34,11 +41,13 @@ public class EnemyMeleeAI: MonoBehaviour
     }
     private void Start()
     {
+        EnemyHp = 20f;
         EnemyAnim = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        float AttackDistance = Vector3.Distance(transform.position, Player.transform.position);
         //Check Player seen distance and attack distance
         PlayerInRange = Physics.CheckSphere(transform.position, DetectionRange, WhatsPlayer);
         PlayerInAttRange = Physics.CheckSphere(transform.position, AttackDistance, WhatsPlayer);
@@ -82,23 +91,32 @@ public class EnemyMeleeAI: MonoBehaviour
 
     private void AttackPlayer()
     {
-        EnemyAnim.SetBool("Walk Forward", false);
-        EnemyAnim.SetBool("Stab Attack", true);
-        //Make enemy stanionary to attack
-        EnemyAgent.SetDestination(EnemyAgent.transform.position);
-
-        transform.LookAt(PlayerCharacter);
-
-        if (!HaveAttacked)
+        if (AttackDistance<=3f)
         {
-            //Ranged Attack 
-            //Rigidbody EnemyRB = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            //EnemyRB.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            //EnemyRB.AddForce(transform.up * 8f, ForceMode.Impulse);
-           
 
-            HaveAttacked = true;
-            Invoke(nameof(ResetAttack), AttackTimer);
+
+            EnemyAnim.SetBool("Walk Forward", false);
+            EnemyAnim.SetBool("Stab Attack", true);
+            //Make enemy stanionary to attack
+            EnemyAgent.SetDestination(EnemyAgent.transform.position);
+
+            transform.LookAt(PlayerCharacter);
+
+            if (!HaveAttacked)
+            {
+
+                player.MeleeTakeDamage();
+
+
+                //Ranged Attack 
+                //Rigidbody EnemyRB = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+                //EnemyRB.AddForce(transform.forward * 32f, ForceMode.Impulse);
+                //EnemyRB.AddForce(transform.up * 8f, ForceMode.Impulse);
+
+
+                HaveAttacked = true;
+                Invoke(nameof(ResetAttack), AttackTimer);
+            }
         }
     }
     private void ResetAttack()
@@ -107,14 +125,15 @@ public class EnemyMeleeAI: MonoBehaviour
         EnemyAnim.SetBool("Stab Attack", false);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage()
     {
-        EnemyHp -= damage;
+        EnemyHp -= player.PlayerDamage;
 
         if (EnemyHp <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
     }
     private void DestroyEnemy()
     {
+        Monsterloot.GenerateLoot();
         Destroy(gameObject);
     }
 
