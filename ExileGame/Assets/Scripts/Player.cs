@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     float PlayerHunger = 100f;
     float PlayerThirst = 100f;
     float AttackTimer = 1.0f;
+    //Player Inventory
+    public InventorySO playerInventory;
     void Start()
     {
         //LookTarget = Input.mousePosition
@@ -131,6 +133,13 @@ public class Player : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
+        var item = other.GetComponent<Item>();
+        if (item)
+        {
+            playerInventory.AddItem(item.item, item.amount);
+            Destroy(other.gameObject);
+        }
+        
         if (other.gameObject.CompareTag("ThrownRock"))
         {
             RangedTakeDamage();
