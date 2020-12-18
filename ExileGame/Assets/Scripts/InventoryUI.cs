@@ -17,7 +17,6 @@ public class InventoryUI : MonoBehaviour
         CreateInventory();
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateInventory();
