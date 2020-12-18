@@ -186,8 +186,8 @@ MonoBehaviour:
     y: 0
     width: 402
     height: 654
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -212,8 +212,8 @@ MonoBehaviour:
     y: 0
     width: 404
     height: 654
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -240,8 +240,8 @@ MonoBehaviour:
     y: 0
     width: 560
     height: 654
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -421,9 +421,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: e8340000
-      m_LastClickedID: 13544
-      m_ExpandedIDs: 0af9ffff6cfbffff423400005634000098340000dc3400002a350000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 6cfbffffa0340000e4340000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -723,7 +723,7 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 142
+  m_LastVerticalScrollValue: 252
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -763,20 +763,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\BAgge\Documents\Unity_Project\Project-Exile\ExileGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 132}
-    m_SelectedIDs: 623b0000
-    m_LastClickedID: 15202
-    m_ExpandedIDs: 00000000563b0000583b00005a3b00005c3b00005e3b0000603b0000623b0000643b0000663b0000683b00006a3b00006c3b00006e3b0000703b0000803b000000ca9a3b
+    scrollPos: {x: 0, y: 404}
+    m_SelectedIDs: cc3b0000
+    m_LastClickedID: 15308
+    m_ExpandedIDs: 00000000c83b0000ca3b0000cc3b0000ce3b0000d03b0000d23b0000d43b0000d63b0000d83b0000da3b0000dc3b0000de3b0000e03b0000e23b0000f23b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -804,7 +804,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000563b0000583b00005a3b00005c3b00005e3b0000603b0000623b0000643b0000663b0000683b00006a3b00006c3b00006e3b0000703b0000
+    m_ExpandedIDs: 00000000c83b0000ca3b0000cc3b0000ce3b0000d03b0000d23b0000d43b0000d63b0000d83b0000da3b0000dc3b0000de3b0000e03b0000e23b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

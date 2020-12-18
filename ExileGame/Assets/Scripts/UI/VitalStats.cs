@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class VitalStats : MonoBehaviour
 {
     public Image fill;
+    public Image empty;
     public GameObject alternate;
     public Text fillText;
     private int percentage;
@@ -52,6 +53,7 @@ public class VitalStats : MonoBehaviour
         else if (percentage == 0)
         {
             this.transform.GetChild(0).gameObject.SetActive(true);
+            empty.enabled = false;
             UIoutline.enabled = true;
         }
         else

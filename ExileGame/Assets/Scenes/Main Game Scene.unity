@@ -477,7 +477,7 @@ MonoBehaviour:
   horizontalStartPlace: -260
   verticalStartPlace: 425
   horizontalSpace: 250
-  verticalSpace: 0
+  verticalSpace: 250
   columns: 3
 --- !u!1 &705507993
 GameObject:
@@ -1632,6 +1632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fill: {fileID: 828369120}
+  empty: {fileID: 0}
   alternate: {fileID: 966546957}
   fillText: {fileID: 1381103989}
   UIoutline: {fileID: 1091118811}
@@ -1744,6 +1745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fill: {fileID: 1404484042}
+  empty: {fileID: 0}
   alternate: {fileID: 968845426}
   fillText: {fileID: 758887459}
   UIoutline: {fileID: 1172072768}
@@ -1857,6 +1859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fill: {fileID: 1367935147}
+  empty: {fileID: 1215646224}
   alternate: {fileID: 321682232}
   fillText: {fileID: 1754362819}
   UIoutline: {fileID: 1210051665}
@@ -2869,6 +2872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fill: {fileID: 2120902393}
+  empty: {fileID: 0}
   alternate: {fileID: 1403821163}
   fillText: {fileID: 332605470}
   UIoutline: {fileID: 1895609590}
