@@ -171,7 +171,10 @@ public class Player : MonoBehaviour
     {
         PlayerLife -= MeleeEnemy.damage;
     }
-
+    private void OnApplicationQuit()
+    {
+        playerInventory.InventoryContainer.Clear();
+    }
     //public void LookAtPointOfInterest()
     //{
     //    Vector3 MousePosition = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y));
