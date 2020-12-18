@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     //Player stats
     public float PlayerLife ;
     float PlayerSanity = 100f;
-    float PlayerHunger = 100f;
+    float PlayerHunger;
     float PlayerThirst = 100f;
     float AttackTimer = 1.0f;
     //Player Inventory
@@ -41,12 +41,14 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
         AttackTimer += Time.deltaTime;
-       // Debug.Log(AttackTimer);
+        // Debug.Log(AttackTimer);
+        StatusSystem(PlayerHunger);
         PlayerMovement();
         LeftClickAction();
         //RightClickAction();
         GatherResources();
         //StatusSystem();
+        
     }
     void PlayerMovement()
     {
@@ -116,8 +118,10 @@ public class Player : MonoBehaviour
         Destroy(obj);
     }
 
-    void StatusSystem()
+    public void StatusSystem(float hunger)
     {
+        PlayerHunger = hunger;
+        //Debug.Log(PlayerHunger);
         //Calculate player status such as Life , Hunger , Water , Sanity etc.
     }
     void GatherResources()
