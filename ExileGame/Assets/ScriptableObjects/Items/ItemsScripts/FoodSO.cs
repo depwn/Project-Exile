@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Items/Food Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Items/Food Item")]
 public class FoodSO : ItemSO
 {
     public int HealValue;

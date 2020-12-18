@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Items/Weapon Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Items/Weapon Item")]
 public class WeaponSO : ItemSO
 {
     public int attackBonusValue;

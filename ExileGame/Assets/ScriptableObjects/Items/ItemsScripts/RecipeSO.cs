@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Items/Recipe Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Items/Recipe Item")]
 public class RecipeSO : ItemSO
 {
     public int requirementAmount;
