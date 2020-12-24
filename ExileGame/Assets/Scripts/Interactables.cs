@@ -5,11 +5,11 @@ using UnityEngine;
 public class Interactables : MonoBehaviour {
 
     public float radius = 3f;
-    
+
     [SerializeField]
     private Outline outline;
     public int nodeHP;
-    
+
     [System.Serializable]
     public class drops {
         public GameObject drop;
@@ -25,10 +25,10 @@ public class Interactables : MonoBehaviour {
         // This method will be overwritten by the InteractAction() method in the Scriptable objects        
     }
 
-    public void GenerateLoot() {        
+    public void GenerateLoot() {
         nodeHP--;
         if (nodeHP >= 1) {
-            float RNG = Random.Range(0.0f, 100.0f);            
+            float RNG = Random.Range(0.0f, 100.0f);
             foreach (drops item in lootTable) {
                 if (item.chance > RNG) {
                     LootDrop(item.drop, item.amount);
@@ -56,12 +56,25 @@ public class Interactables : MonoBehaviour {
 
     //Outline on Mouseover
     private void OnMouseEnter() {
-        outline.enabled = !outline.enabled;
+        if (InteractableRangeCheck(gameObject)) {           
+            outline.enabled = true;
+        }
     }
 
-    private void OnMouseExit() {
-        outline.enabled = !outline.enabled;
+    private void OnMouseOver() {
+        if (InteractableRangeCheck(gameObject) && outline.enabled.Equals(false)){
+            outline.enabled = true;
+        }
     }
-    
-    
+
+    private void OnMouseExit() {        
+            outline.enabled = false;        
+    }
+
+    public bool InteractableRangeCheck(GameObject interactable) {
+        if (GameObject.Find("Character").GetComponent<Player>().interactablesInRange.Contains(interactable)) {
+            return true;
+        }
+        return false;        
+    }
 }
