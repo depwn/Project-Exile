@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 3526410763942797242, guid: c2ad934482e47414db53148dd3996164,
     type: 3}
-  itemUISprite: {fileID: 0}
+  itemUISprite: {fileID: 21300000, guid: 350f2e489c1d0458db18e969f67cb28a, type: 3}
   itemType: 0
   itemID: 3
   maxAmount: 100

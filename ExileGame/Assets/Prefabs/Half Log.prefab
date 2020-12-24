@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1410853955397439619}
   - component: {fileID: 1410853955397439618}
   - component: {fileID: 1410853955397439676}
+  - component: {fileID: 4643194756142933836}
   m_Layer: 0
   m_Name: Half Log
   m_TagString: Loot
@@ -124,4 +125,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2296ba7aa77ccf645bfb9c17be34b831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1256756805690999422, guid: d6ffc7a68b46ea349a9e7b7fcb479942, type: 3}
+  player: {fileID: 100000, guid: f2b6f64ec23092a4fbe12d90b4535537, type: 3}
+  playerInventory: {fileID: 11400000, guid: 9b164f4267ebb0b4b9a345c3d6bed4b8, type: 2}
+  UIamount: 1
+--- !u!114 &4643194756142933836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409790943336388240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41d6d0ac767a3da4787b14f5a726864c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 96ccccf61285e6348a3c83a1f3c44619, type: 2}
+  amount: 1

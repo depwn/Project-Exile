@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //public Transform LookTarget;
+    List<GameObject> interactablesInRange = new List<GameObject>();
     public float PlayerDamage = 10.0f;
     [SerializeField]
     Collider PlayerCol;
@@ -36,20 +36,19 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerLife<=0)
-        {
-            Destroy(gameObject);
-        }
-        AttackTimer += Time.deltaTime;
-        // Debug.Log(AttackTimer);
+        //if (PlayerLife<=0)
+        //{
+        //    Destroy(gameObject);
+        //}
+        AttackTimer += Time.deltaTime;        
         StatusSystem(PlayerHunger);
         PlayerMovement();
         LeftClickAction();
         //RightClickAction();
         GatherResources();
-        //StatusSystem();
-        
+        //StatusSystem();        
     }
+
     void PlayerMovement()
     {
         float XDir = Input.GetAxis("Horizontal");
@@ -135,15 +134,10 @@ public class Player : MonoBehaviour
             PlayerAnim.SetBool("IsGathering", false);
         }
     }
+
     public void OnTriggerEnter(Collider other)
     {
-        var item = other.GetComponent<Item>();
-        if (item)
-        {
-            playerInventory.AddItem(item.item, item.amount);
-            Destroy(other.gameObject);
-        }
-        
+                
         if (other.gameObject.CompareTag("ThrownRock"))
         {
             RangedTakeDamage();
@@ -175,12 +169,10 @@ public class Player : MonoBehaviour
     {
         playerInventory.InventoryContainer.Clear();
     }
-    //public void LookAtPointOfInterest()
-    //{
-    //    Vector3 MousePosition = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y));
-    //    transform.LookAt(MousePosition + Vector3.up *  transform.position.y);
-    ////    Vector3 LookDirection = LookTarget.position - transform.position;
-    ////    Quaternion RotateTo = Quaternion.LookRotation(LookDirection);
-    ////    MainPlayer.transform.rotation = Quaternion.Lerp(transform.rotation, RotateTo, PlayerSpeed * 5f);
-    //}
+
+    //Add interactables to a list to check if they're in range for the player.
+
+    
+
+
 }

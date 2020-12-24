@@ -53,7 +53,7 @@ public class VitalStats : MonoBehaviour
         else if (percentage == 0)
         {
             this.transform.GetChild(0).gameObject.SetActive(true);
-            empty.enabled = false;
+            //empty.enabled = false;
             UIoutline.enabled = true;
         }
         else

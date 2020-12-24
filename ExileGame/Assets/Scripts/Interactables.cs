@@ -5,7 +5,7 @@ using UnityEngine;
 public class Interactables : MonoBehaviour {
 
     public float radius = 3f;
-    List<GameObject> interactablesInRange = new List<GameObject>();
+    
     [SerializeField]
     private Outline outline;
     public int nodeHP;
@@ -62,4 +62,6 @@ public class Interactables : MonoBehaviour {
     private void OnMouseExit() {
         outline.enabled = !outline.enabled;
     }
-} //Line69Nice.mp3
+    
+    
+}

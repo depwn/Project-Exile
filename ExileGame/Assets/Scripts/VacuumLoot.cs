@@ -6,7 +6,7 @@ public class VacuumLoot : MonoBehaviour
 {
     public GameObject PullOBJ;
     public float ForceSpeed;
-    float VacuumOffset = 0.5f;
+    //float VacuumOffset = 0.5f;
     public void OnTriggerStay(Collider coll) 
     {
 
@@ -17,19 +17,19 @@ public class VacuumLoot : MonoBehaviour
                 (PullOBJ.transform.position,
                  transform.position,
                  ForceSpeed * Time.deltaTime);
-            if(Vector3.Distance(PullOBJ.transform.position,transform.position)<=VacuumOffset) 
-            {
-                Loot(PullOBJ);
-                //Destroy(PullOBJ);
-            }
+            //if(Vector3.Distance(PullOBJ.transform.position,transform.position)<=VacuumOffset) 
+            //{
+            //    Loot(PullOBJ);
+            //    //Destroy(PullOBJ);
+            //}
         }     
     }
   
 
-    public void Loot(GameObject loot) 
-    {
-        //Implement later: Add whatever the player has looted to his inventory/currency
-    }
+    //public void Loot(GameObject loot) 
+    //{
+    //    //Implement later: Add whatever the player has looted to his inventory/currency
+    //}
 
     
 }

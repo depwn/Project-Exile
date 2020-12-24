@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1256756805690999422, guid: d6ffc7a68b46ea349a9e7b7fcb479942, type: 3}
+  playerInventory: {fileID: 11400000, guid: 9b164f4267ebb0b4b9a345c3d6bed4b8, type: 2}
+  UIamount: 1
 --- !u!54 &4858114817292404185
 Rigidbody:
   m_ObjectHideFlags: 0
