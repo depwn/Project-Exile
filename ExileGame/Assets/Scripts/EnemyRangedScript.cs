@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyRangedScript : MonoBehaviour
 {
+    public float speed = 0f;
     public float damage = 0f;
     [SerializeField]
     MonsterLoot Monsterloot;
@@ -42,8 +43,10 @@ public class EnemyRangedScript : MonoBehaviour
     }
     private void Start()
     {
+        speed = GetComponent<NavMeshAgent>().speed; ;
         EnemyHp = 20f;
         EnemyAnimRanged = GetComponent<Animator>();
+        EnemyAnimRanged.SetFloat("AnimSpeed", speed);
     }
 
     private void Update()

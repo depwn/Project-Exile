@@ -71,7 +71,7 @@ public class Player : MonoBehaviour {
 
         //TO DO: Move this to the AXE Scriptable object's left click
 
-        if (Input.GetMouseButtonDown(0) && AttackTimer > 1.0f) {
+        if (Input.GetMouseButtonDown(0) && AttackTimer >= 1.0f) {
 
             //LookAtPointOfInterest();
             //PlayerSpeed = 0f;
@@ -79,17 +79,23 @@ public class Player : MonoBehaviour {
             AttackTimer += Time.deltaTime;
             //Debug.Log(AttackTimer);
             Debug.Log("Attack Pressed");
-            PlayerAnim.SetBool("IsAttacking", true);
+            PlayerAnim.SetTrigger("Attack");
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100)) {
                 GameObject hitObject = hit.transform.gameObject;
                 if (hitObject.CompareTag("Interactable") && InteractableRangeCheck(hitObject)) {
+                    transform.LookAt(hitObject.transform);
                     hitObject.GetComponent<Interactables>().GenerateLoot();
-                }                
+                }
+                else if (hitObject.CompareTag("Ground"))
+                {
+                    transform.LookAt(hit.point);
+                }
             }
             ///!!!! REWORK ENEMY SCRIPTS TO HAVE A UNIVERSAL TAKE DAMAGE METHOD
             foreach(GameObject enemy in enemiesInFront) {
+                transform.LookAt(hit.transform);
                 //enemy.TakeDamage();
             }
 

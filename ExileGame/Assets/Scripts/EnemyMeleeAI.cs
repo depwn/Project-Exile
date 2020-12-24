@@ -4,13 +4,15 @@ using UnityEngine.AI;
 
 public class EnemyMeleeAI: MonoBehaviour
 {
+    public float speed = 3f;
+    public float AttackRadius = 3f;
     public float damage = 20f;
     [SerializeField]
     MonsterLoot Monsterloot;
     [SerializeField]
     GameObject Player;
     [SerializeField]
-     Player player;
+    Player player;
     Animator EnemyAnim;
     public NavMeshAgent EnemyAgent;
 
@@ -36,18 +38,20 @@ public class EnemyMeleeAI: MonoBehaviour
 
     private void Awake()
     {
-        PlayerCharacter = GameObject.Find("Character").transform;      
+        PlayerCharacter = GameObject.Find("Character").transform;
         EnemyAgent = GetComponent<NavMeshAgent>();
     }
     private void Start()
     {
+        speed = GetComponent<NavMeshAgent>().speed;;
         EnemyHp = 20f;
         EnemyAnim = GetComponent<Animator>();
+        EnemyAnim.SetFloat("AnimSpeed", speed);
     }
 
     private void Update()
     {
-        float AttackDistance = Vector3.Distance(transform.position, Player.transform.position);
+        // float AttackDistance = Vector3.Distance(transform.position, Player.transform.position);
         //Check Player seen distance and attack distance
         PlayerInRange = Physics.CheckSphere(transform.position, DetectionRange, WhatsPlayer);
         PlayerInAttRange = Physics.CheckSphere(transform.position, AttackDistance, WhatsPlayer);
@@ -91,32 +95,50 @@ public class EnemyMeleeAI: MonoBehaviour
 
     private void AttackPlayer()
     {
-        if (AttackDistance<=3f)
+        #region OldAttack 
+        //if (AttackDistance<=3f)
+        //{
+
+        //EnemyAnim.SetBool("Walk Forward", false);
+        //EnemyAnim.SetBool("Stab Attack", true);
+        ////Make enemy stanionary to attack
+        //EnemyAgent.SetDestination(EnemyAgent.transform.position);
+
+        //transform.LookAt(PlayerCharacter);
+
+        //if (!HaveAttacked)
+        //{
+
+        //    player.MeleeTakeDamage();
+
+
+        //    //Ranged Attack 
+        //    //Rigidbody EnemyRB = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        //    //EnemyRB.AddForce(transform.forward * 32f, ForceMode.Impulse);
+        //    //EnemyRB.AddForce(transform.up * 8f, ForceMode.Impulse);
+
+
+        //    HaveAttacked = true;
+        //    Invoke(nameof(ResetAttack), AttackTimer);
+        //}
+        //}
+        #endregion
+        EnemyAnim.SetBool("Walk Forward", false);
+        EnemyAnim.SetBool("Stab Attack", true);
+        //Make enemy stanionary to attack
+        EnemyAgent.SetDestination(EnemyAgent.transform.position);
+        transform.LookAt(PlayerCharacter);
+
+        Collider[] HitCollisions = Physics.OverlapSphere(transform.position, AttackRadius);
+        foreach (var player in HitCollisions)
         {
-
-
-            EnemyAnim.SetBool("Walk Forward", false);
-            EnemyAnim.SetBool("Stab Attack", true);
-            //Make enemy stanionary to attack
-            EnemyAgent.SetDestination(EnemyAgent.transform.position);
-
-            transform.LookAt(PlayerCharacter);
-
-            if (!HaveAttacked)
+            if (HaveAttacked == false)
             {
-
-                player.MeleeTakeDamage();
-
-
-                //Ranged Attack 
-                //Rigidbody EnemyRB = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-                //EnemyRB.AddForce(transform.forward * 32f, ForceMode.Impulse);
-                //EnemyRB.AddForce(transform.up * 8f, ForceMode.Impulse);
-
-
+                player.GetComponent<Player>().MeleeTakeDamage();
                 HaveAttacked = true;
                 Invoke(nameof(ResetAttack), AttackTimer);
             }
+
         }
     }
     private void ResetAttack()
@@ -140,7 +162,7 @@ public class EnemyMeleeAI: MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, AttackDistance);
+        Gizmos.DrawWireSphere(transform.position, AttackRadius);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, DetectionRange);
     }

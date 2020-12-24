@@ -10,6 +10,7 @@ TagManager:
   - RangedEnemy
   - MeleeEnemy
   - ThrownRock
+  - Ground
   layers:
   - Default
   - TransparentFX
