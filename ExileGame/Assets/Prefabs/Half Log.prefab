@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 100000, guid: f2b6f64ec23092a4fbe12d90b4535537, type: 3}
   playerInventory: {fileID: 11400000, guid: 9b164f4267ebb0b4b9a345c3d6bed4b8, type: 2}
-  UIamount: 1
+  lootClip: {fileID: 8300000, guid: acc2be823cd082246b27ecc568f2d664, type: 3}
 --- !u!114 &4643194756142933836
 MonoBehaviour:
   m_ObjectHideFlags: 0
