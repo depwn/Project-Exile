@@ -19,9 +19,9 @@ public class Loot : MonoBehaviour {
 
 
     void OnCollisionEnter(Collision col) {
-        if (col.collider.Equals(playerCol)) {            
-            playerInventory.AddItem(GetComponent<Item>().item, GetComponent<Item>().amount);
+        if (col.collider.Equals(playerCol)) {
             AudioSource.PlayClipAtPoint(lootClip, transform.position);
+            playerInventory.AddItem(GetComponent<Item>().item, GetComponent<Item>().amount);
             Destroy(this.gameObject);
         }
     }
