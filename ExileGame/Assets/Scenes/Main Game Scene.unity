@@ -1579,7 +1579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkClip: {fileID: 8300000, guid: ae7f8454235ae0a48b1867b7f9a79516, type: 3}
-  hitClip: {fileID: 0}
+  hitClip: {fileID: 8300000, guid: 2ffd4899c261de94e8ce5314178d9bf0, type: 3}
 --- !u!1 &1091118806
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,8 @@ public class Loot : MonoBehaviour {
     BoxCollider playerCol;
     [SerializeField]
     public InventorySO playerInventory;
-    
+    [SerializeField]
+    private AudioClip lootClip;
 
 
     public void Start() {
@@ -20,6 +21,7 @@ public class Loot : MonoBehaviour {
     void OnCollisionEnter(Collision col) {
         if (col.collider.Equals(playerCol)) {            
             playerInventory.AddItem(GetComponent<Item>().item, GetComponent<Item>().amount);
+            AudioSource.PlayClipAtPoint(lootClip, transform.position);
             Destroy(this.gameObject);
         }
     }
