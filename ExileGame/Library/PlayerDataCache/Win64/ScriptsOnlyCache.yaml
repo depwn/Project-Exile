@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AnimationSounds
     - CameraController
     - CraftMaterialSO
     - EnemyMeleeAI
@@ -15,6 +16,7 @@ ScriptsOnlyBuild:
     - MonsterLoot
     - Outline
     - Player
+    - UIManager
     - VacuumLoot
     - VitalStats
     - WeaponSO
@@ -41,6 +43,7 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
@@ -77,6 +80,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
     - Class: 91
@@ -96,55 +103,61 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11398}
     - Class: 114
-      Script: {instanceID: 11632}
+      Script: {instanceID: 11550}
     - Class: 114
-      Script: {instanceID: 11740}
+      Script: {instanceID: 11634}
     - Class: 114
-      Script: {instanceID: 11780}
+      Script: {instanceID: 11742}
     - Class: 114
-      Script: {instanceID: 11894}
+      Script: {instanceID: 11782}
     - Class: 114
-      Script: {instanceID: 11920}
+      Script: {instanceID: 11896}
     - Class: 114
-      Script: {instanceID: 12126}
+      Script: {instanceID: 11922}
     - Class: 114
-      Script: {instanceID: 12222}
+      Script: {instanceID: 12128}
     - Class: 114
-      Script: {instanceID: 12228}
+      Script: {instanceID: 12224}
     - Class: 114
-      Script: {instanceID: 12282}
+      Script: {instanceID: 12230}
     - Class: 114
-      Script: {instanceID: 12358}
+      Script: {instanceID: 12284}
     - Class: 114
-      Script: {instanceID: 12414}
+      Script: {instanceID: 12298}
     - Class: 114
-      Script: {instanceID: 12460}
+      Script: {instanceID: 12300}
     - Class: 114
-      Script: {instanceID: 12522}
+      Script: {instanceID: 12362}
     - Class: 114
-      Script: {instanceID: 12538}
+      Script: {instanceID: 12418}
     - Class: 114
-      Script: {instanceID: 12558}
+      Script: {instanceID: 12464}
     - Class: 114
-      Script: {instanceID: 12634}
+      Script: {instanceID: 12526}
     - Class: 114
-      Script: {instanceID: 12708}
+      Script: {instanceID: 12542}
     - Class: 114
-      Script: {instanceID: 12730}
+      Script: {instanceID: 12562}
     - Class: 114
-      Script: {instanceID: 12758}
+      Script: {instanceID: 12638}
     - Class: 114
-      Script: {instanceID: 12790}
+      Script: {instanceID: 12712}
     - Class: 114
-      Script: {instanceID: 12798}
+      Script: {instanceID: 12734}
     - Class: 114
-      Script: {instanceID: 12832}
+      Script: {instanceID: 12762}
     - Class: 114
-      Script: {instanceID: 12834}
+      Script: {instanceID: 12794}
     - Class: 114
-      Script: {instanceID: 12954}
+      Script: {instanceID: 12802}
     - Class: 114
-      Script: {instanceID: 13156}
+      Script: {instanceID: 12836}
+    - Class: 114
+      Script: {instanceID: 12838}
+    - Class: 114
+      Script: {instanceID: 12958}
+    - Class: 114
+      Script: {instanceID: 13160}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -222,7 +235,7 @@ ScriptsOnlyBuild:
     className: NavMeshLink
   - hash:
       serializedVersion: 2
-      Hash: 8ca82799fc92a4150516bd64259a152c
+      Hash: 5115b57240b20d57da3a4b9040a46a52
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyMeleeAI
@@ -286,6 +299,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 87b4be7efcc0811169aba80a6775bb73
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIManager
   - hash:
       serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
@@ -456,7 +475,7 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
-      Hash: e7a3a1bea02966513290a989dd1e6e6f
+      Hash: fc53ef2f4663d0ae28cf0c8bca33e401
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -474,10 +493,16 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 8ca82799fc92a4150516bd64259a152c
+      Hash: 94ffecb2883c3e05597c57adb1cb1688
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyRangedScript
+  - hash:
+      serializedVersion: 2
+      Hash: b299f0b21e4fc77bf9daf42382053023
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AnimationSounds
   - hash:
       serializedVersion: 2
       Hash: 5f1752ed2092162f016c19510c28a8b9
@@ -564,7 +589,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 83e769eee07fc231384c812eedbb8224
+      Hash: 207f93d7033c449ce5240de7c3d1ab49
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Loot
