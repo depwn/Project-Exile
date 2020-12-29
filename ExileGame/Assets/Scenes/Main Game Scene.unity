@@ -4314,5 +4314,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8645218870168401537, guid: b3cbb78413af53d469fb2e72cb272ff0,
+        type: 3}
+      propertyPath: lootTable.Array.data[1].drop
+      value: 
+      objectReference: {fileID: 7000446948878635159, guid: 25d0a0f07bfae0644ba593fe7fba6039,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3cbb78413af53d469fb2e72cb272ff0, type: 3}
